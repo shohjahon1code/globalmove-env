@@ -1,0 +1,22 @@
+{
+  "name": "globalmove-env",
+  "version": "1.0.0",
+  "description": "This is save keys secretly built for global-move",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/my-dotenv.git"
+  },
+  "keywords": [
+    "Js",
+    "npm",
+    "nodejs"
+  ],
+  "author": "Suyunov Shohjahon",
+  "license": "ISC",
+  "homepage": "https://github.com/yourusername/my-dotenv#readme"
+}
