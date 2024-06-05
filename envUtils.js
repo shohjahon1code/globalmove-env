@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
 function parseEnv(file_path) {
   const env_file_content = fs.readFileSync(file_path, "utf-8");
@@ -31,4 +31,4 @@ function globalMoveEnv(file_path = ".env") {
   });
 }
 
-export { globalMoveEnv };
+exports.globalMoveEnv = globalMoveEnv;
