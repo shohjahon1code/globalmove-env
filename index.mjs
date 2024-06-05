@@ -1,3 +1,2 @@
-import { globalMoveEnv } from "./envUtils.js";
-
+import { globalMoveEnv } from './envUtils.mjs';
 export { globalMoveEnv };

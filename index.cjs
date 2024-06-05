@@ -1,3 +1,3 @@
-const {  globalMoveEnv } = require('./envUtils.js');
+const {  globalMoveEnv } = require('./envUtils.cjs');
 
 module.exports = {  globalMoveEnv };
