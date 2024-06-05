@@ -1,6 +1,6 @@
 {
   "name": "globalmove-env",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "This is save keys secretly built for global-move",
   "type": "module",
   "main": "index.cjs",
@@ -12,10 +12,6 @@
   },
   "scripts": {
     "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shohjahon1code/globalmove-env.git"
   },
   "keywords": [
     "Js",
