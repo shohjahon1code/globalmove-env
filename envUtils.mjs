@@ -1,21 +1,32 @@
 import fs from "fs";
 import path from "path";
 
-function parseEnv(file_path) {
-  const env_file_content = fs.readFileSync(file_path, "utf-8");
-  const env_variables = {};
+const LINE = /(?:^|^)\s*(?:export\s+)?([\w.-]+)(?:\s*=\s*?|:\s+?)(\s*'(?:\\'|[^'])*'|\s*"(?:\\"|[^"])*"|\s*`(?:\\`|[^`])*`|[^#\r\n]+)?\s*(?:#.*)?(?:$|$)/mg;
 
+function parseEnv(file_path) {
   if (!fs.existsSync(file_path)) {
     throw new Error(`The file ${file_path} does not exist.`);
   }
 
-  env_file_content.split("\n").forEach((line) => {
-    const [key, value] = line.split("=");
+  const env_file_content = fs.readFileSync(file_path, "utf-8");
+  const env_variables = {};
+  let match;
 
-    if (key && value) {
-      env_variables[key.trim()] = value.trim();
+  while ((match = LINE.exec(env_file_content)) !== null) {
+    const key = match[1].trim();
+    let value = match[2] || '';
+    value = value.trim();
+
+    if ((value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'")) ||
+        (value.startsWith('`') && value.endsWith('`'))) {
+      value = value.slice(1, -1);
     }
-  });
+
+    value = value.replace(/\\(['"`])/g, '$1');
+
+    env_variables[key] = value;
+  }
 
   return env_variables;
 }
